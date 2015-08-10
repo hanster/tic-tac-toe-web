@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title TicTacToe Game Setup
+    link href='/assets/stylesheets/style.css' rel='stylesheet' type='text/css'
+
+  body
+
+    #content
+
+      h1 TicTacToe
+
+
+      form#game_options[action="/start" method="get"]
+
+        select[name="player_option"]
+          - for player_option in setup.player_options
+            option[value=player_option[0]]=player_option[1]
+
+        select[name="board_option"]
+          - for board_option in setup.board_options
+            option[value=board_option[0]]=board_option[1]
+
+        input[type="submit" value="Play"]

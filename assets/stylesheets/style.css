@@ -1,0 +1,60 @@
+#board {
+  width: 500px;
+  height: 500px;
+}
+
+#content {
+  width: 500px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
+
+.panel {
+  position: relative;
+  border: 1px solid black;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.size_three .panel {
+  width: 32%;
+  height: 32%;
+  font-size: 100px;
+}
+
+.size_four .panel {
+  width: 24%;
+  height: 24%;
+  font-size: 75px;
+}
+
+.panel_link {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+
+  z-index: 1;
+
+  /* fixes overlap error in IE7/8 */
+  background-image: url('empty.gif');
+}
+
+.move span {
+  color: green;
+}
+
+.X span {
+  color: red;
+}
+
+.O span {
+  color: blue;
+}

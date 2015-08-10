@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title TicTacToe
+    link href='/assets/stylesheets/style.css' rel='stylesheet' type='text/css'
+
+  body
+
+    #content
+
+      h1 Playing TicTacToe
+
+      a [href="/setup"] Return to setup menu
+
+      h2 =game_model.status
+
+      div [id="board" class=game_model.board_class]
+        - for board_panel in game_model.board_panels
+          div [class="panel" class=board_panel.css_class]
+            a [href=board_panel.url]
+              span [class="panel_link"]=board_panel.text
+
