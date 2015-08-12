@@ -18,38 +18,44 @@ module TicTacToeWeb
 
       def call(env)
         @params = extract_params(env)
-        game = create_base_game(env)
-        current_board = extract_board_param.split('')
-        board = TicTacToeCore::Board.new(board_type, current_board)
-        game.board = board
-        game.make_move(params["move"].to_i - 1)
-        @game_model = Models::Game.new(game, player_type, board_type)
+        game = create_next_game_state
+        @game_model = Models::Game.new(game, player_option, board_option)
         render("play.slim")
       end
 
       private
 
-      attr_reader :params, :player_type, :board_type
+      attr_reader :params
 
-      def create_base_game(env)
-        @player_type = extract_player_option_param
-        @board_type = extract_board_option_param
+      def create_next_game_state
+        game = create_base_game
+        game.board = create_current_board
+        game.make_move(params["move"].to_i - 1)
+        game
+      end
+
+      def create_base_game
         TicTacToeCore::GameSetup.new(create_web_ui).build_game
       end
 
       def create_web_ui
-        Ui::WebUi.new(board_type, player_type)
+        Ui::WebUi.new(board_option, player_option)
+      end
+
+      def create_current_board
+        current_board = extract_board_param.split('')
+        TicTacToeCore::Board.new(board_option, current_board)
       end
 
       def extract_board_param
-        params.fetch("board", "-" * board_type * board_type)
+        params.fetch("board", "-" * board_option * board_option)
       end
 
-      def extract_player_option_param
+      def player_option
         params.fetch(PLAYERS_OPTION_PARAM, DEFAULT_PLAYER_OPTION).to_i
       end
 
-      def extract_board_option_param
+      def board_option
         params.fetch(BOARD_OPTION_PARAM, DEFAULT_BOARD_OPTION).to_i
       end
 

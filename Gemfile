@@ -9,3 +9,8 @@ gem 'rake'
 gem 'rspec'
 gem 'rack-test'
 gem 'simplecov'
+
+group :development do
+  gem 'pry'
+  gem 'pry-byebug'
+end

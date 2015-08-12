@@ -2,11 +2,23 @@ GEM
   remote: https://rubygems.org/
   remote: https://shan-ruby-gems.herokuapp.com/
   specs:
+    byebug (5.0.0)
+      columnize (= 0.9.0)
+    coderay (1.1.0)
+    columnize (0.9.0)
     daemons (1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     eventmachine (1.0.7)
     json (1.8.3)
+    method_source (0.8.2)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
+      pry (~> 0.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -32,6 +44,7 @@ GEM
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
+    slop (3.6.0)
     temple (0.7.6)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
@@ -44,6 +57,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  pry
+  pry-byebug
   rack
   rack-test
   rake

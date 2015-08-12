@@ -22,7 +22,7 @@ module TicTacToeWeb
       def game_model
         Game.new(core_game, player_type, board_type)
       end
-      
+
       private
 
       def create_game

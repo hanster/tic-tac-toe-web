@@ -5,7 +5,7 @@ module TicTacToeWeb
 
       PLAYER_TURN_TEXT = "Turn = Player"
       GAME_OVER_TEXT = "Game Over\n\n"
-      WINNER_MESSAGE = "%s wins!"
+      WINNER_MESSAGE = "wins!"
       DRAW_MESSAGE = "It's a draw!"
       PLAY_URL = "/play?"
       CLASS_SIZE_3 = "size_three"
@@ -55,7 +55,7 @@ module TicTacToeWeb
         if board.tie?
           DRAW_MESSAGE
         else
-          WINNER_MESSAGE % board.winner
+          "#{board.winner} #{WINNER_MESSAGE}"
         end
       end
 
@@ -81,11 +81,14 @@ module TicTacToeWeb
 
     class BoardPanel
       attr_reader :url ,:text, :css_class
+
       def initialize(url, text)
         @url = url
         @text = text
         @css_class = is_text_marker? ? text : 'move'
       end
+
+      private
 
       def is_text_marker?
         text == 'X' || text == 'O'

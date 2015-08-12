@@ -7,7 +7,7 @@ module TicTacToeWeb
       include RenderingHelpers
 
       attr_reader :message, :game_model
-      
+
       def initialize
         @message = "Start message"
       end
