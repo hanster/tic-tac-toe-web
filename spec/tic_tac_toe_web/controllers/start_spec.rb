@@ -8,8 +8,10 @@ module TicTacToeWeb
         Start.new
       end
 
+      let(:hvh_game) { TicTacToeCore::GameSetup::HVH_GAME_TYPE }
+
       it "renders a screen with a new 3x3 game" do
-        get('/', { "player_option" => 1, "board_option" => 3 })
+        get('/', { "player_option" => hvh_game, "board_option" => 3 })
         expect(last_response.status).to eq 200
         (1..9).each do |number|
           expect(last_response.body).to include(number.to_s)
@@ -17,7 +19,7 @@ module TicTacToeWeb
       end
 
       it "renders a screen wth a new 4x4 game" do
-        get('/', { "player_option" => 1, "board_option" => 4 })
+        get('/', { "player_option" => hvh_game, "board_option" => 4 })
         expect(last_response.status).to eq 200
         (1..16).each do |number|
           expect(last_response.body).to include(number.to_s)
