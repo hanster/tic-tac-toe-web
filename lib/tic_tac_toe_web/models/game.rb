@@ -1,3 +1,5 @@
+require 'tic_tac_toe_web/game_updater'
+
 module TicTacToeWeb
   module Models
     class Game
@@ -12,7 +14,7 @@ module TicTacToeWeb
       CLASS_SIZE_4 = "size_four"
 
       def initialize(game, player_type, board_type)
-        @game = game
+        @game = GameUpdater.new(game).next_game_state
         @board = game.board
         @player_type = player_type
         @board_type = board_type

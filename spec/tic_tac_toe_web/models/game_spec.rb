@@ -13,6 +13,10 @@ module TicTacToeWeb
       let(:game) { TicTacToeCore::Game.new(board, players, ui) }
       let(:game_model) { Game.new(game, 1, 3) }
 
+      before(:each) do
+        allow(game).to receive(:get_current_player_move).and_return(nil)
+      end
+
       it "generates the move url for a new game" do
         expect(game_model.url).to eq("/play?player_option=1&board_option=3&board=---------")
       end
@@ -24,6 +28,7 @@ module TicTacToeWeb
       it "contains the board class for a four sized board" do
         board = TicTacToeCore::Board.create_empty(4)
         game = TicTacToeCore::Game.new(board, players, ui)
+        allow(game).to receive(:get_current_player_move).and_return(nil)
         game_model = Game.new(game, 1, 3)
         expect(game_model.board_class).to eq("size_four")
       end
@@ -64,6 +69,7 @@ module TicTacToeWeb
       def create_game_model_with_board(size, initial)
         board = TicTacToeCore::Board.new(size,initial.split(''))
         game = TicTacToeCore::Game.new(board, players, ui)
+        allow(game).to receive(:get_current_player_move).and_return(nil)
         Game.new(game, 1, 3)
       end
     end
